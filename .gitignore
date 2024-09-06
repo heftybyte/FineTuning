@@ -1,0 +1,4 @@
+/.env
+/finetuning-llama3/
+/.ipynb_checkpoints/
+.idea
