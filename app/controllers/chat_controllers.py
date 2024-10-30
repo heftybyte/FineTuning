@@ -5,7 +5,6 @@ import os
 def get_gpt_response(message: str, model: str):
     client = OpenAI(api_key=os.getenv('OPENAI_SECRET_KEY'))
     system_prompt = os.getenv('SYSTEM_PROMPT')
-    print(f"system_prompt: {system_prompt}")
     try:
         response = client.chat.completions.create(
             model=model,
