@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import json
 from app.db.startup import get_db_connection
@@ -92,7 +93,8 @@ def save_message_to_db(user_id: str, message: str, response: str, chat_history: 
         chat_history_list.append({
             "user_message": message,
             "model_response": response,
-            "model_used": model_used
+            "model_used": model_used,
+            "timestamp": datetime.now().isoformat()
         })
 
         cur.execute("""
