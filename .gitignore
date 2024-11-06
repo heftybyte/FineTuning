@@ -2,3 +2,7 @@
 /finetuning-llama3/
 /.ipynb_checkpoints/
 .idea
+.env
+__pycache__/
+/venv/
+/pidgin-chatbot-api
