@@ -36,9 +36,10 @@ async def send_message(request: MessageRequest):
         save_message_to_db(request.user_id, request.message, model_response, chat_history[2], model_used)
 
         # reduce threshold
-        update_threshold(request.user_id, threshold - 1)
+        if threshold > 0:
+            update_threshold(request.user_id, threshold - 1)
 
-        return {"message": model_response, "threshold": threshold - 1}
+        return {"message": model_response, "threshold": threshold if threshold > 0 else 0}
 
     except BadRequestException as e:
         raise HTTPException(status_code=400, detail=str(e))

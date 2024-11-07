@@ -16,6 +16,7 @@ def get_db_connection():
     return conn
 
 def create_database_if_not_exists():
+
     conn = get_db_connection()
     cur = conn.cursor()
 
