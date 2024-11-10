@@ -1,8 +1,11 @@
-from app.db.startup import create_database_if_not_exists
+import os
 import uvicorn
 from fastapi import FastAPI
 from app.api import router
 from contextlib import asynccontextmanager
+from app.db.startup import create_database_if_not_exists
+from dotenv import load_dotenv
+load_dotenv()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -20,4 +23,4 @@ app = FastAPI(lifespan=lifespan)
 app.include_router(router)
 
 if __name__ == "__main__":
-    uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("app.main:app", host=os.getenv("SERVER_HOST"), port=os.getenv("SERVER_PORT"), reload=True)
